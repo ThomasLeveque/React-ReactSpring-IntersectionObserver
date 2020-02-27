@@ -1,24 +1,114 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Item from './Item';
+import './App.scss';
 
 function App() {
+  const [items, set] = useState([
+    {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      name: 'React'
+    },
+    {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      name: 'Vue'
+    },
+    {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      name: 'Angular'
+    },
+    {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      name: 'Javascript'
+    },
+    {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      name: 'React'
+    },
+    {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      name: 'Vue'
+    },
+    {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      name: 'Angular'
+    },
+    {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      name: 'Javascript'
+    },
+    {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      name: 'React'
+    },
+    {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      name: 'Vue'
+    },
+    {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      name: 'Angular'
+    },
+    {
+      id: 4,
+      name: 'Javascript'
+    },
+    {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      name: 'React'
+    },
+    {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      name: 'Vue'
+    },
+    {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      name: 'Angular'
+    },
+    {
+      id: Math.random()
+        .toString(36)
+        .substr(2, 9),
+      name: 'Javascript'
+    }
+  ]);
+
+  const removeItem = id => {
+    set(items.filter(item => item.id !== id));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {items.map((item, index) => (
+        <Item index={index} key={item.id} item={item} clicked={removeItem} />
+      ))}
     </div>
   );
 }
